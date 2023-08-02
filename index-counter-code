@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Word Counter App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    #word-counter-container {
+      text-align: center;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    #text-input {
+      font-size: 18px;
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      width: 300px;
+    }
+    #word-count {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    #char-count {
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div id="word-counter-container">
+    <textarea id="text-input" placeholder="Enter your text here"></textarea>
+    <div id="word-count">Word count: 0</div>
+    <div id="char-count">Character count: 0</div>
+  </div>
+
+  <script>
+    const textInput = document.getElementById("text-input");
+    const wordCountElement = document.getElementById("word-count");
+    const charCountElement = document.getElementById("char-count");
+
+    function updateCounts() {
+      const text = textInput.value.trim();
+      const wordCount = text === "" ? 0 : text.split(/\s+/).length;
+      const charCount = text.length;
+      wordCountElement.textContent = `Word count: ${wordCount}`;
+      charCountElement.textContent = `Character count: ${charCount}`;
+    }
+
+    // Update counts on text input change
+    textInput.addEventListener("input", updateCounts);
+  </script>
+</body>
+</html>
